@@ -1,27 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { url_server } from "../server_backend/conexion";
 
-export function FormUpdate(){
-    const [ Xguias, setXguias]= useState([])
-    
-    const load_guias=()=>{
-        const user="Liam"
-        const guia_unica="637d7d9167c1cf45c86ad647"
-        console.log(`${url_server}/`)
-        //fetch(`${url_server}/`,{
-        fetch(`${url_server}/guia/buscar/?username=${user}&id_guia=${guia_unica}`,{
-            mode: 'cors',
-            method:"get",
-            }).then(res=> res.json())
-            .then(res=>{                 
-                    setXguias([res.guias.user_guias])
-            }).catch(function (reason){console.log(reason)})
-    }
-    
+export function FormUpdate({Xguias}){
+    const [Xguias2, setXguias]=useState([Xguias])
     useEffect(()=>{
-        load_guias()
-        
-        },[])
+        setXguias([Xguias])
+    },[])
 
     return(
         <>
@@ -29,12 +13,12 @@ export function FormUpdate(){
         
        
             {
-            Xguias.map(guia=>
+            Xguias2.map(guia=>
             <div className="container-sm">
             <form id="form_guia" className="row g-3" key={guia._id}> 
                 <div className="col-md-4">
                     <label className="form-label" htmlFor="id">id</label>
-                    <input className="form-control" required type="text" id="id" name="id" defaultValue={guia._id} />
+                    <input className="form-control"  required type="text" id="id" name="id" value={guia._id} />
                 </div>
                 <div className="col-md-4">
                     <label className="form-label" htmlFor="nit">NIT del Remitente:</label>
