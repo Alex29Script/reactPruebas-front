@@ -8,13 +8,13 @@ export function Inicio(){
         <>
         <h1> inicio </h1>
         <form>
-            <label htmlFor="name"> nombre </label>
-            <input type="text" />
+            <label htmlFor="name" className="form-label"> Nombre </label>
+            <input type="text" className="form-control" />
 
-            <label htmlFor="pass"> contrasena </label>
-            <input type="password" />
+            <label htmlFor="pass" className="form-label"> Contraseña </label>
+            <input type="password" className="form-control"/>
             <button type="botton"> iniciar session </button>
-            </form>
+        </form>
         <Table_guias />
         </>
 

@@ -1,25 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
+import { url_server } from "../server_backend/conexion";
 
-export function Table_guias(personas){
+
+export function Table_guias(props){
+    const[Guias, setGuias]=useState([])
+    const username="Liam"
+    const load_guias=()=>{
+        
+        console.log(`${url_server}/`)
+        //fetch(`${url_server}/`,{
+        console.log(`${url_server}/guias/todas/?username=${username}`)
+        fetch(`${url_server}/guias/todas/?username=${username}`,{
+            mode: 'cors',
+            method:"get",
+            }).then(res=> res.json())
+            .then(res=>{                 
+                    setGuias(res.guias.user_guias)                    
+            }).catch(function (reason){console.log(reason)})
+    }
+    
+    useEffect(()=>{
+        load_guias()
+        
+        },[])
+   //href={url_server+"/guia/buscar/?id_guia="+guia._id+"&username="+username}
+
 
     return(
         <>
-        <table>
+        { 
+
+
+        }
+        <button type="button" className="btn btn-primary">Primary</button>
+        <button type="button" className="btn btn-danger">Danger</button>
+        <table  className="table">
         <thead>
             <tr>
-                <th> nombre</th>
-                <th> Apellido </th>
+                <th  scope="col"> ID Guia2</th>
+                <th  scope="col"> Destinatario </th>
+                <th  scope="col">Fecha </th>
+                <th  scope="col"> Ciudad </th>
+                <th  scope="col"> Ciudad Destino </th>
+                <th  scope="col"> Estado </th>
+                <th  scope="col"> Acciones </th>
+
+
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td> Alex </td>
-                <td> Ariza </td>
-
-            </tr>
-            <td> Andres </td>
-            <td> Ortiz  </td>
+            {
+                Guias.map(guia=> 
+                
+                <tr key={guia._id}>
+                <td scope="row"> {guia._id}</td>
+                <td> {guia.nombre_des} </td>
+                <td> {guia.fecha} </td>
+                <td> {guia.ciudad_recogida} </td>
+                <td> {guia.ciudad_des} </td>
+                <td> {guia.estado} </td>
+                <td><a className="btn btn-primary" role="button" href={url_server+"/guia/buscar/?id_guia="+guia._id+"&username="+username}>ver</a></td>
+                </tr>
+                )
+            
+             }
         </tbody>
 
         </table>
