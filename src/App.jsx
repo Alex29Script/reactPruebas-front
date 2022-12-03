@@ -6,6 +6,7 @@ import {Inicio} from './components/Inicio'
 import { Nav } from './components/Nav'
 import { FormUpdate } from './components/FormUpdate'
 import { Buscarguia } from './components/Buscarguia'
+import { Input } from './components/Input'
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element= {<Inicio />}/>
         <Route path="/nav" element={<Nav />}/>
-        <Route path="/guia/buscar/"  element={<Buscarguia/>}/>     
+        <Route path="/guia/buscar/"  element={<Buscarguia/>}/>
+        <Route path="/input/" element={<Input/>}/>    
       </Routes>
     </BrowserRouter>
     </>

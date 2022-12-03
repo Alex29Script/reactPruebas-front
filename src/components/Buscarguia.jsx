@@ -24,24 +24,16 @@ export function Buscarguia(){
                     return res.guias.user_guias
             }).catch(function (reason){console.log(reason)})
     }
-    const enviar=(event)=>{
+    const enviar= async(event)=>{
         event.preventDefault()
         console.log("hola")
-        buscar_guia()
+        await buscar_guia()
     }
 
-    useEffect(()=>{
-        
-    },[])
-    
-    
    
-
-
-
     return(
     <>
-        <h1> Formulario: Buscar Guia 2 </h1>
+        <h1> Formulario: Buscar Guia </h1>
         <div className="container-sm">
             <form onSubmit={(event)=> enviar(event)}>
                 <label htmlFor="id"> ID Guia: </label>

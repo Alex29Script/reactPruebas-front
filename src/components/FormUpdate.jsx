@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import { url_server } from "../server_backend/conexion";
 
 export function FormUpdate({XGuias}){
-    const [Xguias2, setXguias]=useState(XGuias)
-    useEffect(()=>{
-        setXguias(XGuias)
-    },[])
-
+    
     return(
         <>
         <h3>Formulario de Guía</h3>
         
        
             {
-            Xguias2.map(guia=>
+            XGuias.map(guia=>
             <div className="container-sm">
-            <form id="form_guia" className="row g-3" key={guia._id}> 
+            <form id="form_guia" className="row g-3" key={guia._id} > 
                 <div className="col-md-4">
                     <label className="form-label" htmlFor="id">id</label>
                     <input className="form-control"  required type="text" id="id" name="id" value={guia._id} />
