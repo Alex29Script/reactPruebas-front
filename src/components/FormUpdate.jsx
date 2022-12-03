@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { url_server } from "../server_backend/conexion";
 
-export function FormUpdate({Xguias}){
-    const [Xguias2, setXguias]=useState([Xguias])
+export function FormUpdate({XGuias}){
+    const [Xguias2, setXguias]=useState(XGuias)
     useEffect(()=>{
-        setXguias([Xguias])
+        setXguias(XGuias)
     },[])
 
     return(

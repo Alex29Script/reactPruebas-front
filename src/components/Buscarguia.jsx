@@ -8,7 +8,8 @@ import { url_server } from "../server_backend/conexion";
 export function Buscarguia(){
     const [ Guia_encontrada, setGuia_encontrada]= useState([])
     
-    const load_guias=()=>{
+    const buscar_guia=()=>{
+        
         const user="Liam"
         const guia_unica=document.getElementById("id_").value
         console.log(`${url_server}/guia/buscar/?username=${user}&id_guia=${guia_unica}`)
@@ -20,30 +21,44 @@ export function Buscarguia(){
             .then(res=>{                 
                     setGuia_encontrada([res.guias.user_guias])
                     console.log("este es ", [res.guias.user_guias])
+                    return res.guias.user_guias
             }).catch(function (reason){console.log(reason)})
     }
+    const enviar=(event)=>{
+        event.preventDefault()
+        console.log("hola")
+        buscar_guia()
+    }
+
+    useEffect(()=>{
+        
+    },[])
     
     
-        return(
-       <>
-        <h1> Formulario: Buscar Guia </h1>
+   
+
+
+
+    return(
+    <>
+        <h1> Formulario: Buscar Guia 2 </h1>
         <div className="container-sm">
-            <form>
+            <form onSubmit={(event)=> enviar(event)}>
                 <label htmlFor="id"> ID Guia: </label>
                 <input type="text" id="id_"/>
-                
+                <input type="submit" value="buscar" />
             </form>
-                <button type="button" onClick={load_guias}> buscar </button>
+                
         </div>
         <br />
         {
         Guia_encontrada.map(xguia=>
         <div className="container-sm">
-            <FormUpdate Xguias={xguia} />
+            <FormUpdate XGuias={Guia_encontrada}/>
         </div>
         )
         }
-       </>
+    </>
     )
 
 }
