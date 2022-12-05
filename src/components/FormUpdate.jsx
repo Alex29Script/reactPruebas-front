@@ -2,7 +2,48 @@ import React, { useEffect, useState } from "react";
 import { url_server } from "../server_backend/conexion";
 
 export function FormUpdate({XGuias}){
+    const actualizar_guia=(event)=>{
+        event.preventDefault()
+        const guia={};
+        guia.username="alex32api"
+        //guia._id=document.getElementById("id").value;
+        guia.nit=document.getElementById("nit").value;
+        guia.fecha=document.getElementById("fecha").value;
+        guia.dir_recogida=document.getElementById("dir_recogida").value;
+        guia.ciudad_recogida=document.getElementById("dir").value;
+        guia.largo=document.getElementById("largo").value;
+        guia.ancho=document.getElementById("ancho").value;
+        guia.alto=document.getElementById("alto").value;
+        guia.peso=document.getElementById("peso").value;
+        guia.nombre_des=document.getElementById("nombre_des").value;
+        guia.nit_des=document.getElementById("nit_des").value;
+        guia.dir_des=document.getElementById("dir_des").value;
+        guia.ciudad_des=document.getElementById("ciudad_des").value;
+        guia.estado="Guardado";
+        console.log(document.getElementById("delicado").value)
+        if (document.getElementById("delicado").value=="true"){
+            guia.delicado=true
+        }else{
+            guia.delicado=false
+        }
+
+            console.log("guia actualizar: ",guia)
+        
+        fetch(`${url_server}/guia/agregar`,{
+            headers:{"Content-Type":"application/json"},
+            mode: 'cors',
+            method:"post",
+            body:JSON.stringify({guia})
+            }).then(res=> res.json())
+            .then(res=> {console.log(res)})
+        
+        }
     
+
+
+
+
+
     return(
         <>
         <h3>Formulario de Guía</h3>
@@ -11,7 +52,7 @@ export function FormUpdate({XGuias}){
             {
             XGuias.map(guia=>
             <div className="container-sm">
-            <form id="form_guia" className="row g-3" key={guia._id} > 
+            <form id="form_guia" className="row g-3" key={guia._id} onSubmit={(event)=>actualizar_guia(event)} > 
                 <div className="col-md-4">
                     <label className="form-label" htmlFor="id">id</label>
                     <input className="form-control"  required type="text" id="id" name="id" value={guia._id} />

@@ -3,9 +3,12 @@ import { render } from "react-dom";
 import { url_server } from "../server_backend/conexion";
 
 
-export function Table_guias(props){
+export function Table_guias({username}){
     const[Guias, setGuias]=useState([])
-    const username="Liam"
+    if(!username){
+        username="alex32api"
+    }
+    
     const load_guias=()=>{
         
         console.log(`${url_server}/`)
@@ -30,11 +33,10 @@ export function Table_guias(props){
     return(
         <>
         { 
-
-
+            <h1>Guia de {username}</h1>
+        
         }
-        <button type="button" className="btn btn-primary">Primary</button>
-        <button type="button" className="btn btn-danger">Danger</button>
+        
         <table  className="table">
         <thead>
             <tr>

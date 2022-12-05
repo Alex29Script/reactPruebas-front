@@ -17,11 +17,19 @@ export const Input = ()=>{
     return(
         <>
         <form>
-        <label htmlFor="guia">guia: </label>
-        <input type="text" name="guia" id="guia" />
+        
+        <p>
+            <label htmlFor="username">nombre: </label>
+            <input type="text" name="username" id="username" />
+        </p>
+
+        <p>
+            <label htmlFor="guia">Buscar guia: </label>
+            <input type="text" name="guia" id="guia" />
+        </p>
         <input type="submit" value="enviar" onClick={(event)=>onClickForm(event)} />
+
         </form>
-       
         {
             <h1>{Guia}</h1>
         }
