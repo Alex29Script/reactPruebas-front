@@ -1,0 +1,1 @@
+export const url_server2="http://localhost:3525"
