@@ -10,6 +10,7 @@ import { Input } from './components/Input'
 import { Server2 } from './components/Server2'
 import { Sever2consulta } from './components/server2Consulta'
 import { Padre } from './components/FuncionPadreHijo/Padre'
+import { Menu } from './components/comunicacion/menu'
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <Route path='/server2' element={<Server2/>}/>
         <Route path="/server2/mensajes" element={<Sever2consulta/>}/>
         <Route path="/funcion/PadreHijo" element={<Padre/>}/>
+        <Route path="/funcion/Comunicacion/" element={<Menu/>}/>
+        
 
       </Routes>
     </BrowserRouter>
